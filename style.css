@@ -1,0 +1,120 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e0eafc, #cfdef3); /* Gradient background */
+    font-family: 'Orbitron', sans-serif;
+    transition: background 0.5s ease;
+}
+
+body.dark-mode {
+    background: linear-gradient(135deg, #2c3e50, #1a1a2e); /* Dark mode gradient */
+    color: #e0e0e0;
+}
+
+.container {
+    max-width: fit-content;
+    text-align: center;
+    padding: 2.5rem;
+    background: rgba(255, 255, 255, 0.1); /* Glassmorphism effect */
+    backdrop-filter: blur(10px); /* Frosted glass */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: background 0.5s ease, transform 0.3s ease;
+    animation: fadeIn 1s ease-in-out; /* Fade-in animation */
+}
+
+body.dark-mode .container {
+    background: rgba(50, 50, 50, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+#clock {
+    font-size: 4.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for readability */
+    transition: transform 0.2s ease, color 0.5s ease;
+    color: #333;
+}
+
+body.dark-mode #clock {
+    color: #f0f0f0;
+}
+
+#clock.updated {
+    transform: scale(1.03); /* Slightly larger scale for update animation */
+    transition: transform 0.2s ease-out;
+}
+
+#date {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    font-family: 'Roboto', sans-serif; /* Modern font for date */
+    color: #555;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode #date {
+    color: #cccccc;
+}
+
+#theme-toggle {
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 25px; /* More rounded button */
+    background: linear-gradient(90deg, #6a82fb, #fc5c7d); /* Gradient button */
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#theme-toggle:hover {
+    transform: translateY(-3px); /* Lift effect on hover */
+    background: linear-gradient(90deg, #fc5c7d, #6a82fb); /* Reverse gradient on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+#theme-toggle:active {
+    transform: translateY(1px); /* Pressed effect */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Container Queries for Responsive Design */
+@container (max-width: 400px) {
+    #clock {
+        font-size: 3rem;
+    }
+    #date {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+    #theme-toggle {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+    .container {
+        padding: 1.5rem;
+    }
+}
